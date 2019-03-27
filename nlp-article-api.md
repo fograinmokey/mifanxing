@@ -4,8 +4,14 @@
 + Description
     + [must] header.X-User-ssid 会话标识 例：9a4b8dcf-1234-1234-1234-505e73621f59
     + [must] cookie.X_U_SSID 会话标识 例：9a4b8dcf-1234-1234-1234-505e73621f59
-    + 用户登录后需要附带登录标记
+    + [must] 用户登录后需要附带登录标记
     
++ Parameters
+    + filter[shown] 是否展示过，示例：filter[shown]=false|true
+    + filter[firstRecTime] 打开推荐页面的时间，当filter[shown]=true时，该参数必填，格式比须按照[yyyy-MM-dd hh:mm:ss]填写，示例：filter[firstRecTime]=2019-03-27 15:27:39
+    + page[number] 页码，不填时默认为1，当filter[shown]=true时，该参数必须为1
+    + page[size] 页长，不填时默认为10
+
 + Response 200 (application/json)
 
         {
