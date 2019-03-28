@@ -9,7 +9,7 @@
 + Parameters
     + filter[shown] 是否展示过，【必填】，示例：filter[shown]=false|true
     + filter[firstRecTime] 打开推荐页面的时间，【非必填】，当filter[shown]=true时，【该参数必填】，格式比须按照[yyyy-MM-dd hh:mm:ss]填写，示例：filter[firstRecTime]=2019-03-27 15:27:39
-    + page[number] 页码，【非必填】，不填时默认为1，当filter[shown]=true时，【该参数必须为1或不填】
+    + page[number] 页码，【非必填】，不填时默认为1，当filter[shown]=false时，【该参数必须为1或不填】
     + page[size] 页长，【非必填】，不填时默认为10
 
 + Response 200 (application/json)
