@@ -189,7 +189,20 @@
                 }
             ]
         }
-        
+
+### 获取未展示的推荐文章个数 /recommended/notShowSize
+
++ Description
+    + [must] header.X-User-ssid 会话标识 例：9a4b8dcf-1234-1234-1234-505e73621f59
+    + [must] cookie.X_U_SSID 会话标识 例：9a4b8dcf-1234-1234-1234-505e73621f59
+    + [must] 用户登录后需要附带登录标记
+
++ Response 200 (application/json)       
+     
+        {
+            "data": 20
+        }
+
 ### 主动触发推荐任务 /recommended/satrtRecommending
 + Description
     + [must] header.X-User-ssid 会话标识 例：9a4b8dcf-1234-1234-1234-505e73621f59
