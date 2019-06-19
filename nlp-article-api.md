@@ -1,4 +1,4 @@
-## 本接口属于article工程
+## 推荐
 ### 获取推荐列表 /recommended
 
 + Description
@@ -211,7 +211,7 @@
 + Response 200 (application/json)
 
 
-
+## 分类
 ### 查询类别详情[GET] /admin/Classifications/{id}
 
 + Parameters
