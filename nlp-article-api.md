@@ -212,6 +212,8 @@
 
 
 ## 分类
+
+
 ### 查询类别详情[GET] /admin/Classifications/{id}
 
 + Parameters
@@ -376,7 +378,7 @@
         ]
       }
 
-### 更新文章类别标识[PUTCH] /admin/Topics{id}?classificationId={classificationId}
+### 更新文章类别标识[PUTCH] /admin/Topics/{id}/classification/{classificationId}
 + Description
     + [MUST] authenticated
     + [MUST] ROLE_ADMIN
@@ -385,8 +387,5 @@
     + classificationId - 分类ID
 
 + Response 200 (Application/json)
-  
-      {
-       "data": 1
-      }  
+
     
