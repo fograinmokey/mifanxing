@@ -209,3 +209,184 @@
     + [must] cookie.X_U_SSID 会话标识 例：9a4b8dcf-1234-1234-1234-505e73621f59
     + 用户登录后需要保存登录信息
 + Response 200 (application/json)
+
+
+
+### 查询类别详情[GET] /admin/Classifications/{id}
+
++ Parameters
+     +  id 类别id
+
++ Response 200 (Application/json)
+
+      {
+        "data": {
+            "id": 2,
+            "parentId": 1,
+            "classificationName": "行业新闻",
+            "parent": {
+                "id": 1,
+                "parentId": 0,
+                "classificationName": "资讯"
+            }
+        }
+      }
+
+### 查询类别列表[GET] /admin/Classifications
+
++ Description 
+     + filter[parentId]=0（参数固定值；获取所有的父节点）
+     + filter[parentId]=1（参数非固定值；获取某个父节点下的子数据）
+     + page[number]=1&page[size]=10
+     + sort -modified(从新到旧) | modified(从旧到新)
+
++ Response 200 (Application/json) (获取所有的父节点示例)
+
+      {
+        "meta": {
+            "totalPages": 1,
+            "totalElements": 1,
+            "size": 10,
+            "number": 1,
+            "numberOfElements": 1,
+            "first": true,
+            "last": true,
+            "sort": null
+        },
+        "links": {
+            "self": "/admin/Classifications?filter[parentId]=0&page[number]=1&page[size]=10",
+            "first": "/admin/Classifications?filter[parentId]=0&page[number]=1&page[size]=10",
+            "last": "/admin/Classifications?filter[parentId]=0&page[number]=1&page[size]=10"
+        },
+        "data": [
+            {
+                "id": 1,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "parentId": 0,
+                "classificationName": "资讯",
+                "displayorder": 0
+            }
+        ]
+     }
+
++ Response 200 (Application/json) (获取某个父节点下的子数据)
+
+      {
+        "meta": {
+            "totalPages": 1,
+            "totalElements": 9,
+            "size": 10,
+            "number": 1,
+            "numberOfElements": 9,
+            "first": true,
+            "last": true,
+            "sort": null
+        },
+        "links": {
+            "self": "/admin/Classifications?filter[parentId]=1&page[number]=1&page[size]=10",
+            "first": "/admin/Classifications?filter[parentId]=1&page[number]=1&page[size]=10",
+            "last": "/admin/Classifications?filter[parentId]=1&page[number]=1&page[size]=10"
+        },
+        "data": [
+            {
+                "id": 2,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "parentId": 1,
+                "classificationName": "行业新闻",
+                "displayorder": 0
+            },
+            {
+                "id": 3,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "modified": "2019-06-05 18:25:14",
+                "parentId": 1,
+                "classificationName": "设备/乐器",
+                "displayorder": 0
+            },
+            {
+                "id": 4,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "modified": "2019-06-05 18:25:40",
+                "parentId": 1,
+                "classificationName": "录音/混音",
+                "displayorder": 0
+            },
+            {
+                "id": 5,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "parentId": 1,
+                "classificationName": "作曲/编曲",
+                "displayorder": 0
+            },
+            {
+                "id": 6,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "parentId": 1,
+                "classificationName": "舞台/扩声",
+                "displayorder": 0
+            },
+            {
+                "id": 7,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "parentId": 1,
+                "classificationName": "声音设计",
+                "displayorder": 0
+            },
+            {
+                "id": 8,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "parentId": 1,
+                "classificationName": "音源/插件",
+                "displayorder": 0
+            },
+            {
+                "id": 9,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "parentId": 1,
+                "classificationName": "声学装修",
+                "displayorder": 0
+            },
+            {
+                "id": 10,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "parentId": 1,
+                "classificationName": "周边/其他",
+                "displayorder": 0
+            }
+        ]
+      }
+
+### 更新文章类别标识[PUTCH] /admin/Topics{id}?classificationId={classificationId}
++ Description
+    + [MUST] authenticated
+    + [MUST] ROLE_ADMIN
++ Description 
+    + id - 更新的文章ID
+    + classificationId - 分类ID
+
++ Response 200 (Application/json)
+  
+      {
+       "data": 1
+      }  
+    
