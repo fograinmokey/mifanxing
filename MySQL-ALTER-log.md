@@ -3,6 +3,28 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
 
+### 2019年6月20日
+> article topics表添加classification_id，新建classification
+```sql
+ALTER TABLE `topics`
+ADD COLUMN `classification_id`  bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '类别标识' AFTER `category_id`;
+
+CREATE TABLE `classification` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '父类别',
+  `classification_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '类别名称',
+  `displayorder` int(11) unsigned NOT NULL DEFAULT 0,
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT 1,
+  `creator` bigint(20) unsigned NOT NULL DEFAULT 0,
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT 0,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='类别表';
+
+
+```
+
 ### 2019年3月24日
 > article 新建表
 ```sql
