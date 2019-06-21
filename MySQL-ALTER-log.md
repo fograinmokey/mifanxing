@@ -9,6 +9,9 @@
 ALTER TABLE `topics`
 ADD COLUMN `classification_id`  bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '类别标识' AFTER `category_id`;
 
+ALTER TABLE `topics`
+ADD COLUMN `classification_user`  bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '分类人' AFTER `is_repeat`;
+
 CREATE TABLE `classification` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '父类别',
