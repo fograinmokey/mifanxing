@@ -6,6 +6,10 @@
 ### 2019年6月28日
 > article,创建article_classification表；classification表添加dimension，leaf
 ```sql
+ALTER TABLE `topics`
+drop column `classification_id`;
+drop column `classification_user`;
+
 CREATE TABLE `article_classification` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `article_id` bigint(20) unsigned NOT NULL COMMENT '文章id',
