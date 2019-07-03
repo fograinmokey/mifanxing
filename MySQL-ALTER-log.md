@@ -7,8 +7,9 @@
 > article,创建article_classification表；classification表添加dimension，leaf
 ```sql
 ALTER TABLE `topics`
-drop column `classification_id`;
-drop column `classification_user`;
+ALTER TABLE `topics`
+DROP COLUMN `classification_id`,
+DROP COLUMN `classification_user`;
 
 CREATE TABLE `article_classification` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
