@@ -365,6 +365,18 @@
         ]
       }
 
+### 批量增加/修改文章分类 [POST] /admin/ArticleClassification/{articleId}
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN
+
++ Parameters
+    + classificationIds 分类id，多个id需要用逗号隔开，如classificationIds=2,6,12
++ Request
+    
+    /admin/ArticleClassification/100?classificationIds=2,6,12
++ Response 200 (Application/json)
+
 ### 保存修改文章类别 [POST] /admin/ArticleClassification
 + Description
     + [MUST] authenticated
