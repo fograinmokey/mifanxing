@@ -353,7 +353,7 @@
         ]
       }
 
-### 保存文章类别 [POST] /admin/ArticleClassification
+### 保存修改文章类别 [POST] /admin/ArticleClassification
 + Description
     + [MUST] authenticated
     + [MUST] ROLE_ADMIN
@@ -379,25 +379,6 @@
        }
       }
       
-### 修改文章类别 [PATCH] /admin/ArticleClassification
-+ Description
-    + [MUST] authenticated
-    + [MUST] ROLE_ADMIN
-+ Description 
-    + articleId - 文章ID （必填项）
-    + classificationId - 分类ID（必填项）
-
-+ Request（application/json）      
-      
-      {
-    	 "data":{
-    		 "articleId":3,
-    		 "classificationId":11
-    	 }
-      }
-
-+ Response 200 (Application/json)
-
 
 ### 文章详情类别展示[GET] /topics/articleClassification/{id}     
  + Parameters
@@ -443,3 +424,4 @@
             }
         ]
       }
+
