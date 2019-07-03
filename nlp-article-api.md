@@ -260,8 +260,8 @@
 
 ### 查询类别列表[GET] /admin/Classifications
 + Parameters
-     + filter[dimension] 查找某维度中所有分类
-     + filter[parentId] 当parentid为0时查询的是一级分类，根据父id查找其所有子分类
+     + filter[dimension] 根据维度筛选分类
+     + filter[parentId] 根据父id查找其所有子分类，当值为0时查询的是一级分类
      + filter[leaf] 值为0时查找非叶子节点，值为1时查找叶子节点
      + page[number] 页码，【非必填】，不填时默认为1
      + page[size] 页长，【非必填】，不填时默认为10
