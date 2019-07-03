@@ -212,7 +212,29 @@
 
 
 ## 分类
-
++ Data
+    + Classification 类别表
+        + id (Long) - ID
+        + dimension (Integer) - 分类维度，0：是否行业相关，1：文章功能，2：专业领域 
+        + parentId (Long) - 父类别，无父类别为0
+        + classificationName (String) - 类别名称
+        + leaf (Integer) - 是否叶子节点，0/1：否：是
+        + displayorder (Integer) - 排列顺序
+        + enabled (int) - 使能 0禁止 1启用
+        + creator (Long) - 创建人
+        + modifier (Long) - 修改人
+        + created (date) - 创建时间
+        + modified (date) - 修改时间
+    + ArticleClassification 文章-类别表
+        + id (Long) - ID
+        + articleId (Long) - 文章id
+        + dimension (Integer) - 分类维度，0：是否行业相关，1：文章功能，2：专业领域 
+        + classificationId (Long) - 分类标识
+        + enabled (int) - 使能 0禁止 1启用
+        + creator (Long) - 创建人
+        + modifier (Long) - 修改人
+        + created (date) - 创建时间
+        + modified (date) - 修改时间
 
 ### 查询类别详情[GET] /admin/Classifications/{id}
 
@@ -238,12 +260,11 @@
 
 ### 查询类别列表[GET] /admin/Classifications
 + Parameters
-     +  dimension 分类维度，0：是否行业相关，1：文章功能，2：专业领域
-+ Description 
-     + filter[parentId]=0&sort=dimension（参数固定值；获取父节点）；注意：顺序按dimension字段0，1，2展示
-     + filter[parentId]=1&filter[dimension]=0（获子节点）；注意：parentId参数为父节点id值;dimension参数为父节点的dimension值
-     + page[number]=1&page[size]=10
-     + sort -modified(从新到旧) | modified(从旧到新)
+     + filter[dimension] 查找某维度中所有分类
+     + filter[parentId] 当parentid为0时查询的是一级分类，根据父id查找其所有子分类
+     + filter[leaf] 值为0时查找非叶子节点，值为1时查找叶子节点
+     + page[number] 页码，【非必填】，不填时默认为1
+     + page[size] 页长，【非必填】，不填时默认为10
 
 + Response 200 (Application/json) (获取父节点示例)
 
@@ -256,21 +277,12 @@
             "numberOfElements": 3,
             "first": true,
             "last": true,
-            "sort": [
-                {
-                    "direction": "ASC",
-                    "property": "dimension",
-                    "ignoreCase": false,
-                    "nullHandling": "NATIVE",
-                    "descending": false,
-                    "ascending": true
-                }
-            ]
+            "sort": null
         },
         "links": {
-            "self": "/admin/Classifications?filter[parentId]=0&sort=dimension&page[number]=1&page[size]=10",
-            "first": "/admin/Classifications?filter[parentId]=0&sort=dimension&page[number]=1&page[size]=10",
-            "last": "/admin/Classifications?filter[parentId]=0&sort=dimension&page[number]=1&page[size]=10"
+            "self": "/admin/Classifications?filter[parentId]=0&page[number]=1&page[size]=10",
+            "first": "/admin/Classifications?filter[parentId]=0&page[number]=1&page[size]=10",
+            "last": "/admin/Classifications?filter[parentId]=0&page[number]=1&page[size]=10"
         },
         "data": [
             {
@@ -323,9 +335,9 @@
             "sort": null
         },
         "links": {
-            "self": "/admin/Classifications?filter[dimension]=0&filter[parentId]=1&page[number]=1&page[size]=10",
-            "first": "/admin/Classifications?filter[dimension]=0&filter[parentId]=1&page[number]=1&page[size]=10",
-            "last": "/admin/Classifications?filter[dimension]=0&filter[parentId]=1&page[number]=1&page[size]=10"
+            "self": "/admin/Classifications?filter[leaf]=1&filter[dimension]=0&page[number]=1&page[size]=10",
+            "first": "/admin/Classifications?filter[leaf]=1&filter[dimension]=0&page[number]=1&page[size]=10",
+            "last": "/admin/Classifications?filter[leaf]=1&filter[dimension]=0&page[number]=1&page[size]=10"
         },
         "data": [
             {
@@ -382,7 +394,8 @@
 
 ### 文章详情类别展示[GET] /topics/articleClassification/{id}     
  + Parameters
-   +  id 类别id；示例id=3
+   +  id 类别ID
+        +  示例id=3
 + Description
    + 接口根据dimension字段顺序展示0，1，2
 + Response 200 (Application/json)
