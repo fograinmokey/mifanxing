@@ -20,8 +20,10 @@ CREATE TABLE `article_classification` (
   `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topicid_dimension_unique` (`article_id`,`dimension`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文章-类别表（与topics_classifacation类似，但不是同一种分类算法得到的结果）';
+
 
 ALTER TABLE `classification`
 ADD COLUMN `dimension`  tinyint(3) unsigned NOT NULL COMMENT '分类维度，0：是否行业相关，1：文章功能，2：专业领域' AFTER  `id`;
