@@ -215,7 +215,7 @@
 + Data
     + Classification 类别表
         + id (Long) - ID
-        + dimension (Integer) - 分类维度，0：是否行业相关，1：文章功能，2：专业领域 
+        + dimension (Integer) - 分类维度，0：是否行业相关，1：文章功能，2：专业领域 ，3：文章质量
         + parentId (Long) - 父类别，无父类别为0
         + classificationName (String) - 类别名称
         + leaf (Integer) - 是否叶子节点，0/1：否：是
