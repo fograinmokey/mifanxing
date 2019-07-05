@@ -228,7 +228,7 @@
     + ArticleClassification 文章-类别表
         + id (Long) - ID
         + articleId (Long) - 文章id
-        + dimension (Integer) - 分类维度，0：是否行业相关，1：文章功能，2：专业领域 
+        + dimension (Integer) - 分类维度，0：是否行业相关，1：文章功能，2：专业领域 ，3：文章质量
         + classificationId (Long) - 分类标识
         + enabled (int) - 使能 0禁止 1启用
         + creator (Long) - 创建人
